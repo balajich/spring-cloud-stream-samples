@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: readservice
+  cloud:
+    function:
+      definition: readMessageFromQueue
+    stream:
+      bindings:
+        readMessageFromQueue-in-0:
+          destination: myQueue
+          binder: rabbit_mq
+      binders:
+        rabbit_mq:
+          type: rabbit
+          environment:
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
+                virtual-host: /
